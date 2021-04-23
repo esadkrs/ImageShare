@@ -24,12 +24,12 @@ export default function App() {
     
     if (Platform.OS === 'web') {
       let remoteUri = await uploadToAnonymousFilesAsync(pickerResult.uri);
-      selectedImage({ localUri: pickerResult.uri, remoteUri});
+      setSelectedImage({ localUri: pickerResult.uri, remoteUri });
     } else {
       setSelectedImage({ localUri: pickerResult.uri, remoteUri: null });
-    }
+    } 
   };
-
+  
   let openShareDialogAsync = async () => {
     if (!(await Sharing.isAvailableAsync())) {
       alert(`The image is available for sharing at: ${selectedImage.remoteUri}`);
